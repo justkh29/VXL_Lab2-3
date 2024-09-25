@@ -132,7 +132,7 @@ int main(void)
 				  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 				  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
 				  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-				  display7SEG(status);
+				  display7SEG(1);
 				  status = 2;
 				  setTimer(0,500);
 			  }
@@ -152,7 +152,7 @@ int main(void)
 				  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 				  HAL_GPIO_WritePin(EN2_GPIO_Port, EN3_Pin, SET);
 				  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-				  display7SEG(status);
+				  display7SEG(2);
 				  status = 3;
 				  setTimer(0,500);
 			  }
@@ -172,7 +172,7 @@ int main(void)
 				  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 				  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 				  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-				  display7SEG(status);
+				  display7SEG(3);
 				  status = 4;
 				  setTimer(0,500);
 			  }
@@ -192,7 +192,7 @@ int main(void)
 				  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 				  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 				  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-				  display7SEG(status);
+				  display7SEG(0);
 				  status = 1;
 				  setTimer(0,500);
 			  }

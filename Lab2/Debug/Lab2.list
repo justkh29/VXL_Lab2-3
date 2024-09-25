@@ -228,10 +228,10 @@ int main(void)
  800025a:	f44f 7100 	mov.w	r1, #512	; 0x200
  800025e:	4862      	ldr	r0, [pc, #392]	; (80003e8 <main+0x234>)
  8000260:	f000 fd9e 	bl	8000da0 <HAL_GPIO_WritePin>
-				  display7SEG(status);
+				  display7SEG(1);
  8000264:	463b      	mov	r3, r7
  8000266:	469c      	mov	ip, r3
- 8000268:	6878      	ldr	r0, [r7, #4]
+ 8000268:	2001      	movs	r0, #1
  800026a:	f7ff ff6f 	bl	800014c <display7SEG.5965>
 				  status = 2;
  800026e:	2302      	movs	r3, #2
@@ -291,10 +291,10 @@ int main(void)
  80002cc:	f44f 7100 	mov.w	r1, #512	; 0x200
  80002d0:	4845      	ldr	r0, [pc, #276]	; (80003e8 <main+0x234>)
  80002d2:	f000 fd65 	bl	8000da0 <HAL_GPIO_WritePin>
-				  display7SEG(status);
+				  display7SEG(2);
  80002d6:	463b      	mov	r3, r7
  80002d8:	469c      	mov	ip, r3
- 80002da:	6878      	ldr	r0, [r7, #4]
+ 80002da:	2002      	movs	r0, #2
  80002dc:	f7ff ff36 	bl	800014c <display7SEG.5965>
 				  status = 3;
  80002e0:	2303      	movs	r3, #3
@@ -354,10 +354,10 @@ int main(void)
  800033c:	f44f 7100 	mov.w	r1, #512	; 0x200
  8000340:	4829      	ldr	r0, [pc, #164]	; (80003e8 <main+0x234>)
  8000342:	f000 fd2d 	bl	8000da0 <HAL_GPIO_WritePin>
-				  display7SEG(status);
+				  display7SEG(3);
  8000346:	463b      	mov	r3, r7
  8000348:	469c      	mov	ip, r3
- 800034a:	6878      	ldr	r0, [r7, #4]
+ 800034a:	2003      	movs	r0, #3
  800034c:	f7ff fefe 	bl	800014c <display7SEG.5965>
 				  status = 4;
  8000350:	2304      	movs	r3, #4
@@ -417,10 +417,10 @@ int main(void)
  80003ac:	f44f 7180 	mov.w	r1, #256	; 0x100
  80003b0:	480d      	ldr	r0, [pc, #52]	; (80003e8 <main+0x234>)
  80003b2:	f000 fcf5 	bl	8000da0 <HAL_GPIO_WritePin>
-				  display7SEG(status);
+				  display7SEG(0);
  80003b6:	463b      	mov	r3, r7
  80003b8:	469c      	mov	ip, r3
- 80003ba:	6878      	ldr	r0, [r7, #4]
+ 80003ba:	2000      	movs	r0, #0
  80003bc:	f7ff fec6 	bl	800014c <display7SEG.5965>
 				  status = 1;
  80003c0:	2301      	movs	r3, #1
