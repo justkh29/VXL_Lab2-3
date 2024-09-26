@@ -149,7 +149,7 @@ int main(void)
 	  }
   }
 
-  setTimer(0,500);
+  setTimer(0,250);
   setTimer(1,1000);
   while (1)
   {
@@ -166,7 +166,7 @@ int main(void)
 		  {
 			  index_led = 0;
 		  }
-		  setTimer(0,500);
+		  setTimer(0,250);
 	  }
     /* USER CODE END WHILE */
 
