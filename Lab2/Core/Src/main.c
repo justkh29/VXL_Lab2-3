@@ -100,16 +100,13 @@ int main(void)
   {
 	  char segNumber[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
 
-	  for ( int i = 0; i < 7; ++i) {
-		  HAL_GPIO_WritePin (GPIOB , GPIO_PIN_0 << i, (segNumber [num ] >> i) & 1);
-	  }
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, (segNumber[num] >> 0) & 1);
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, (segNumber[num] >> 1) & 1);
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, (segNumber[num] >> 2) & 1);
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, (segNumber[num] >> 3) & 1);
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, (segNumber[num] >> 4) & 1);
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, (segNumber[num] >> 5) & 1);
-//	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, (segNumber[num] >> 6) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, (segNumber[num] >> 0) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, (segNumber[num] >> 1) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, (segNumber[num] >> 2) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, (segNumber[num] >> 3) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, (segNumber[num] >> 4) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, (segNumber[num] >> 5) & 1);
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, (segNumber[num] >> 6) & 1);
   }
   int status = 1;
   setTimer(0,500);
