@@ -97,7 +97,7 @@ int main(void)
   const int MAX_LED = 4;
   int index_led = 0;
   int led_buffer[4] = {1,2,3,4};
-
+  int hour = 15, minute = 8, second = 50;
   void display7SEG(int num)
   {
 	  char segNumber[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
@@ -117,6 +117,7 @@ int main(void)
 	  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
 	  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
   }
+
   void update7SEG(int index)
   {
 	  offPin();
@@ -149,12 +150,35 @@ int main(void)
 	  }
   }
 
+  void updateClockBuffer()
+  {
+	  led_buffer[0] = hour/10;
+	  led_buffer[1] = hour%10;
+	  led_buffer[2] = minute/10;
+	  led_buffer[3] = minute%10;
+  }
   setTimer(0,250);
   setTimer(1,1000);
   while (1)
   {
 	  if(timer_flag[1] == 1)
 	  {
+		  second++;
+		  if(second >= 60)
+		  {
+			  second = 0;
+			  minute++;
+		  }
+		  if(minute >= 60)
+		  {
+			  minute = 0;
+			  hour++;
+		  }
+		  if(hour >= 24)
+		  {
+			  hour = 0;
+		  }
+		  updateClockBuffer();
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		  setTimer(1,1000);
