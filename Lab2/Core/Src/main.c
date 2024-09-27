@@ -98,14 +98,14 @@ int main(void)
   const int MAX_LED_MATRIX = 8;
   int index_led_matrix = 0;
   uint8_t matrix_buffer[8] = {
-		  0b11000011, // ##    ##
-		  0b10111101, // # #### #
+		  0b11100111, // ##    ##
+		  0b11011011, // # #### #
+		  0b10111101, // #      #
+		  0b10111101, // #      #
 		  0b10000001, // #      #
-		  0b10000001, // #      #
-		  0b10000001, // #      #
-		  0b10000001, // #      #
-		  0b10000001, // #      #
-		  0b10000001  // #      #
+		  0b10111101, // #      #
+		  0b10111101, // #      #
+		  0b00011000  // #      #
   };
   int index_led = 0;
   int led_buffer[4] = {1,2,3,4};
@@ -249,7 +249,7 @@ int main(void)
   }
   setTimer(0,250);
   setTimer(1,1000);
-  setTimer(2,50);
+  setTimer(2,10);
   while (1)
   {
 	  if(timer_flag[1] == 1)
@@ -290,7 +290,7 @@ int main(void)
 		  {
 			  index_led_matrix = 0;
 		  }
-		  setTimer(2,50);
+		  setTimer(2,10);
 
 	  }
     /* USER CODE END WHILE */

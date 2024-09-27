@@ -254,8 +254,8 @@ int main(void)
  80002a4:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
  80002a8:	2001      	movs	r0, #1
  80002aa:	f000 fb27 	bl	80008fc <setTimer>
-  setTimer(2,50);
- 80002ae:	2132      	movs	r1, #50	; 0x32
+  setTimer(2,10);
+ 80002ae:	210a      	movs	r1, #10
  80002b0:	2002      	movs	r0, #2
  80002b2:	f000 fb23 	bl	80008fc <setTimer>
   while (1)
@@ -376,8 +376,8 @@ int main(void)
  800035e:	2300      	movs	r3, #0
  8000360:	637b      	str	r3, [r7, #52]	; 0x34
 		  }
-		  setTimer(2,50);
- 8000362:	2132      	movs	r1, #50	; 0x32
+		  setTimer(2,10);
+ 8000362:	210a      	movs	r1, #10
  8000364:	2002      	movs	r0, #2
  8000366:	f000 fac9 	bl	80008fc <setTimer>
 	  if(timer_flag[1] == 1)
