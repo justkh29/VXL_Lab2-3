@@ -98,15 +98,16 @@ int main(void)
   const int MAX_LED_MATRIX = 8;
   int index_led_matrix = 0;
   uint8_t matrix_buffer[8] = {
-		  0b11100111, // ##    ##
-		  0b11011011, // # #### #
-		  0b10111101, // #      #
-		  0b10111101, // #      #
-		  0b10000001, // #      #
-		  0b10111101, // #      #
-		  0b10111101, // #      #
-		  0b00011000  // #      #
+		  0b11100111,
+		  0b11011011,
+		  0b10111101,
+		  0b10111101,
+		  0b10000001,
+		  0b10111101,
+		  0b10111101,
+		  0b10111101
   };
+  uint8_t shift = 0;
   int index_led = 0;
   int led_buffer[4] = {1,2,3,4};
   int hour = 15, minute = 8, second = 50;
@@ -192,64 +193,65 @@ int main(void)
 	  HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, SET);
 	  HAL_GPIO_WritePin(ROW8_GPIO_Port, ROW8_Pin, SET);
   }
-  void updateLEDMatrix(uint8_t index)
-  {
-	  setMatrix();
-	  switch(index)
-	  {
-		  case 0:
-		  {
-			  setCol(matrix_buffer[0]);
-			  HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, RESET);
-			  break;
-		  }
-		  case 1:
-		  {
-			  setCol(matrix_buffer[1]);
-			  HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, RESET);
-			  break;
-		  }
-		  case 2:
-		  {
-			  setCol(matrix_buffer[2]);
-			  HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, RESET);
-			  break;
-		  }
-		  case 3:
-		  {
-			  setCol(matrix_buffer[3]);
-			  HAL_GPIO_WritePin(ROW4_GPIO_Port, ROW4_Pin, RESET);
-			  break;
-		  }
-		  case 4:
-		  {
-			  setCol(matrix_buffer[4]);
-			  HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, RESET);
-			  break;
-		  }
-		  case 5:
-		  {
-			  setCol(matrix_buffer[5]);
-			  HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, RESET);
-			  break;
-		  }
-		  case 6:
-		  {
-			  setCol(matrix_buffer[6]);
-			  HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, RESET);
-			  break;
-		  }
-		  case 7:
-		  {
-			  setCol(matrix_buffer[7]);
-			  HAL_GPIO_WritePin(ROW8_GPIO_Port, ROW8_Pin, RESET);
-			  break;
-		  }
-	  }
+  void updateLEDMatrix(uint8_t index, uint8_t shift) {
+      setMatrix();
+      uint8_t matrix_buffer_shift = (matrix_buffer[index] << shift) | (matrix_buffer[index] >> (8 - shift));
+      switch (index) {
+          case 0:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, RESET);
+              break;
+          }
+          case 1:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, RESET);
+              break;
+          }
+          case 2:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, RESET);
+              break;
+          }
+          case 3:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW4_GPIO_Port, ROW4_Pin, RESET);
+              break;
+          }
+          case 4:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, RESET);
+              break;
+          }
+          case 5:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, RESET);
+              break;
+          }
+          case 6:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, RESET);
+              break;
+          }
+          case 7:
+          {
+              setCol(matrix_buffer_shift);
+              HAL_GPIO_WritePin(ROW8_GPIO_Port, ROW8_Pin, RESET);
+              break;
+          }
+      }
   }
+
+
   setTimer(0,250);
   setTimer(1,1000);
-  setTimer(2,10);
+  setTimer(2,50);
   while (1)
   {
 	  if(timer_flag[1] == 1)
@@ -285,12 +287,15 @@ int main(void)
 	  }
 	  if(timer_flag[2] == 1)
 	  {
-		  updateLEDMatrix(index_led_matrix++);
+		  updateLEDMatrix(index_led_matrix, shift);
+		  index_led_matrix++;
 		  if (index_led_matrix >= MAX_LED_MATRIX)
 		  {
 			  index_led_matrix = 0;
+			  shift++;
+			  if (shift >= 8) shift = 0;
 		  }
-		  setTimer(2,10);
+		  setTimer(2,50);
 
 	  }
     /* USER CODE END WHILE */
