@@ -43,6 +43,23 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
+const int MAX_LED = 4;
+const int MAX_LED_MATRIX = 8;
+int index_led_matrix = 0;
+uint8_t matrix_buffer[8] =
+{
+		  0b11100111,
+		  0b11011011,
+		  0b10111101,
+		  0b10111101,
+		  0b10000001,
+		  0b10111101,
+		  0b10111101,
+		  0b00011000
+};
+int index_led = 0;
+int led_buffer[4] = {1,2,3,4};
+int hour = 15, minute = 8, second = 50;
 
 /* USER CODE END PV */
 
@@ -56,62 +73,8 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
-int main(void)
+void display7SEG(int num)
 {
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_TIM2_Init();
-  /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim2);
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  const int MAX_LED = 4;
-  const int MAX_LED_MATRIX = 8;
-  int index_led_matrix = 0;
-  uint8_t matrix_buffer[8] = {
-		  0b11100111, // ##    ##
-		  0b11011011, // # #### #
-		  0b10111101, // #      #
-		  0b10111101, // #      #
-		  0b10000001, // #      #
-		  0b10111101, // #      #
-		  0b10111101, // #      #
-		  0b00011000  // #      #
-  };
-  int index_led = 0;
-  int led_buffer[4] = {1,2,3,4};
-  int hour = 15, minute = 8, second = 50;
-  void display7SEG(int num)
-  {
 	  char segNumber[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
 
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, (segNumber[num] >> 0) & 1);
@@ -121,17 +84,17 @@ int main(void)
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, (segNumber[num] >> 4) & 1);
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, (segNumber[num] >> 5) & 1);
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, (segNumber[num] >> 6) & 1);
-  }
-  void offPin()
-  {
+}
+void offPin()
+{
 	  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 	  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 	  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
 	  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-  }
+}
 
-  void update7SEG(int index)
-  {
+void update7SEG(int index)
+{
 	  offPin();
 	  switch(index)
 	  {
@@ -160,18 +123,18 @@ int main(void)
 			  break;
 		  }
 	  }
-  }
+}
 
-  void updateClockBuffer()
-  {
+void updateClockBuffer()
+{
 	  led_buffer[0] = hour/10;
 	  led_buffer[1] = hour%10;
 	  led_buffer[2] = minute/10;
 	  led_buffer[3] = minute%10;
-  }
+}
 
-  void setCol(uint8_t value)
-  {
+void setCol(uint8_t value)
+{
 	  HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, ((value>>7)&0x01));
 	  HAL_GPIO_WritePin(ENM1_GPIO_Port, ENM1_Pin, ((value>>6)&0x01));
 	  HAL_GPIO_WritePin(ENM2_GPIO_Port, ENM2_Pin, ((value>>5)&0x01));
@@ -180,9 +143,9 @@ int main(void)
 	  HAL_GPIO_WritePin(ENM5_GPIO_Port, ENM5_Pin, ((value>>2)&0x01));
 	  HAL_GPIO_WritePin(ENM6_GPIO_Port, ENM6_Pin, ((value>>1)&0x01));
 	  HAL_GPIO_WritePin(ENM7_GPIO_Port, ENM7_Pin, ((value>>0)&0x01));
-  }
-  void setMatrix()
-  {
+}
+void setMatrix()
+{
 	  HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, SET);
 	  HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, SET);
 	  HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, SET);
@@ -191,9 +154,9 @@ int main(void)
 	  HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, SET);
 	  HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, SET);
 	  HAL_GPIO_WritePin(ROW8_GPIO_Port, ROW8_Pin, SET);
-  }
-  void updateLEDMatrix(uint8_t index)
-  {
+}
+void updateLEDMatrix(uint8_t index)
+{
 	  setMatrix();
 	  switch(index)
 	  {
@@ -246,7 +209,44 @@ int main(void)
 			  break;
 		  }
 	  }
-  }
+}
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_TIM2_Init();
+  /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim2);
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
   setTimer(0,250);
   setTimer(1,1000);
   setTimer(2,10);
