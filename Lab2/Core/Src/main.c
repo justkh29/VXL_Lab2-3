@@ -163,6 +163,7 @@ int main(void)
   {
 	  if(timer_flag[0] == 1)
 	  {
+		  updateClockBuffer();
 		  update7SEG(index_led++);
 		  if (index_led >= MAX_LED)
 		  {
