@@ -46,7 +46,7 @@ TIM_HandleTypeDef htim2;
 const int MAX_LED = 4;
 int index_led = 0;
 int led_buffer[4] = {1,2,3,4};
-int hour = 15, minute = 59, second = 50;
+int hour = 19, minute = 59, second = 55;
 
 /* USER CODE END PV */
 
