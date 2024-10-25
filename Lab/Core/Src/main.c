@@ -124,91 +124,9 @@ void update7SEG(int index)
 	  }
 }
 
-void updateClockBuffer()
+void trafficLight(uint8_t countRed, uint8_t countYellow, uint8_t countGreen)
 {
-	  led_buffer[0] = hour/10;
-	  led_buffer[1] = hour%10;
-	  led_buffer[2] = minute/10;
-	  led_buffer[3] = minute%10;
-}
 
-void setCol(uint8_t value)
-{
-	  HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, ((value>>7)&0x01));
-	  HAL_GPIO_WritePin(ENM1_GPIO_Port, ENM1_Pin, ((value>>6)&0x01));
-	  HAL_GPIO_WritePin(ENM2_GPIO_Port, ENM2_Pin, ((value>>5)&0x01));
-	  HAL_GPIO_WritePin(ENM3_GPIO_Port, ENM3_Pin, ((value>>4)&0x01));
-	  HAL_GPIO_WritePin(ENM4_GPIO_Port, ENM4_Pin, ((value>>3)&0x01));
-	  HAL_GPIO_WritePin(ENM5_GPIO_Port, ENM5_Pin, ((value>>2)&0x01));
-	  HAL_GPIO_WritePin(ENM6_GPIO_Port, ENM6_Pin, ((value>>1)&0x01));
-	  HAL_GPIO_WritePin(ENM7_GPIO_Port, ENM7_Pin, ((value>>0)&0x01));
-}
-void setMatrix()
-{
-	  HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, SET);
-	  HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, SET);
-	  HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, SET);
-	  HAL_GPIO_WritePin(ROW4_GPIO_Port, ROW4_Pin, SET);
-	  HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, SET);
-	  HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, SET);
-	  HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, SET);
-	  HAL_GPIO_WritePin(ROW8_GPIO_Port, ROW8_Pin, SET);
-}
-void updateLEDMatrix(uint8_t index, uint8_t shift)
-{
-    setMatrix();
-    uint8_t matrix_buffer_shift = (matrix_buffer[index] << shift) | (matrix_buffer[index] >> (8 - shift));
-    switch (index)
-    {
-        case 0:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, RESET);
-            break;
-        }
-        case 1:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, RESET);
-            break;
-        }
-        case 2:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, RESET);
-            break;
-        }
-        case 3:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW4_GPIO_Port, ROW4_Pin, RESET);
-            break;
-        }
-        case 4:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, RESET);
-            break;
-        }
-        case 5:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, RESET);
-            break;
-        }
-        case 6:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, RESET);
-            break;
-        }
-        case 7:
-        {
-            setCol(matrix_buffer_shift);
-            HAL_GPIO_WritePin(ROW8_GPIO_Port, ROW8_Pin, RESET);
-            break;
-        }
-    }
 }
 /* USER CODE END 0 */
 
