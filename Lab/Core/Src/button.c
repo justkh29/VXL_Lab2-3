@@ -1,10 +1,22 @@
 #include "button.h"
-int KeyReg0 = NORMAL_STATE;
-int KeyReg1 = NORMAL_STATE;
-int KeyReg2 = NORMAL_STATE;
-int KeyReg3 = NORMAL_STATE;
+int KeyReg0_1 = NORMAL_STATE;
+int KeyReg1_1 = NORMAL_STATE;
+int KeyReg2_1 = NORMAL_STATE;
+int KeyReg3_1 = NORMAL_STATE;
 
-int TimeOutForKeyPress =  500;
+int KeyReg0_2 = NORMAL_STATE;
+int KeyReg1_2 = NORMAL_STATE;
+int KeyReg2_2 = NORMAL_STATE;
+int KeyReg3_2 = NORMAL_STATE;
+
+int KeyReg0_3 = NORMAL_STATE;
+int KeyReg1_3 = NORMAL_STATE;
+int KeyReg2_3 = NORMAL_STATE;
+int KeyReg3_3 = NORMAL_STATE;
+
+int TimeOutForKeyPress1 =  500;
+int TimeOutForKeyPress2 =  500;
+int TimeOutForKeyPress3 =  500;
 int button1_pressed = 0;
 int button1_long_pressed = 0;
 int button1_flag = 0;
@@ -25,9 +37,17 @@ int isButton1LongPressed(){
 	return 0;
 }
 
-void subKeyProcess(){
+void subKeyProcess(int mode){
 	//TODO
-	//HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+	switch(mode)
+	{
+		case 1:
+			HAL_GPIO_TogglePin(LED_B_GPIO_Port, LED_B_Pin);
+			break;
+		case 2:
+			HAL_GPIO_TogglePin(LED_B_GPIO_Port, LED_B_Pin);
+			break;
+	}
 	button1_flag = 1;
 }
 
@@ -72,9 +92,9 @@ void getKeyInput(){
 	KeyReg1_2 = KeyReg0_2;
 	KeyReg0_2 = HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin);
 
-	int keyState = (KeyReg1_2 == KeyReg2_2) && (KeyReg1_2 == KeyReg3_2);
+	int keyState2 = (KeyReg1_2 == KeyReg2_2) && (KeyReg1_2 == KeyReg3_2);
 
-	switch (keyState)
+	switch (keyState2)
 	{
 	    case 1: // Key is stable
 	        if (KeyReg3_2 == PRESSED_STATE)
@@ -107,9 +127,9 @@ void getKeyInput(){
 	KeyReg1_3 = KeyReg0_3;
 	KeyReg0_3 = HAL_GPIO_ReadPin(B3_GPIO_Port, B3_Pin);
 
-	int keyState = (KeyReg1_3 == KeyReg2_3) && (KeyReg1_3 == KeyReg3_3);
+	int keyState3 = (KeyReg1_3 == KeyReg2_3) && (KeyReg1_3 == KeyReg3_3);
 
-	switch (keyState)
+	switch (keyState3)
 	{
 	    case 1: // Key is stable
 	        if (KeyReg3_3 == PRESSED_STATE)
