@@ -24,6 +24,8 @@
 /* USER CODE BEGIN Includes */
 #include <software_timer.h>
 #include <button.h>
+#include <light_traffic.h>
+#include <fsm_auto.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,7 +50,10 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+int status = 0;
+int duration_G = 5;
+int duration_R = 10;
+int duration_Y = 3;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -120,10 +125,16 @@ int main(void)
 
 
 
-
+  setTimer(1, 1000);
   while (1)
   {
-
+	  if (timer_flag[1] == 1)
+	  {
+		  timer_flag[1] = 0;
+		  HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
+		  setTimer(1,1000);
+	  }
+	  fsm_auto_run();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
