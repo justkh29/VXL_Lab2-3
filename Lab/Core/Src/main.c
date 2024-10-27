@@ -53,9 +53,9 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 int status = 0;
-int duration_G = 5;
-int duration_R = 10;
-int duration_Y = 3;
+int duration_G = 3;
+int duration_R = 4;
+int duration_Y = 2;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,7 +109,6 @@ int main(void)
 
 
 
-  setTimer(1, 1000);
   while (1)
   {
 	  if (timer_flag[1] == 1)
