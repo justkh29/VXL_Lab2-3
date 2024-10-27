@@ -22,12 +22,27 @@ int button1_long_pressed = 0;
 int button1_flag = 0;
 int button2_flag = 0;
 int button3_flag = 0;
-int mode = 1;
 
 int isButton1Pressed(){
 	if(button1_flag == 1){
 		return 1;
 	}
+	return 0;
+}
+
+int isButton2Pressed(){
+	if(button2_flag == 1){
+		return 1;
+	}
+	HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, SET);
+	return 0;
+}
+
+int isButton3Pressed(){
+	if(button3_flag == 1){
+		return 1;
+	}
+	HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, SET);
 	return 0;
 }
 
@@ -39,51 +54,28 @@ int isButton1LongPressed(){
 	return 0;
 }
 
-void changeMode()
-{
-	if (button1_flag == 1)
-	{
-		mode++;
-		if (mode >= 5)
-		{
-			mode = 1;
-		}
-		switch(mode)
-		{
-			case 1:
-				status = 0;
-				break;
-			case 2:
-				status = 5;
-				break;
-			case 3:
-				status = 6;
-				break;
-			case 4:
-				status = 7;
-				break;
-		}
-		button1_flag = 0;
-	}
-}
 void subKeyProcess(int button)
 {
 	//TODO
 	switch (button)
 	{
 		case 1:
+			HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, RESET);
 			button1_flag = 1;
 			break;
 		case 2:
+			HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, RESET);
 			button2_flag = 1;
 			break;
 		case 3:
+			HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, RESET);
 			button3_flag = 1;
 			break;
 	}
 }
 
-void getKeyInput(){
+void getKeyInput()
+{
 
 	KeyReg2_1 = KeyReg1_1;
 	KeyReg1_1 = KeyReg0_1;
@@ -189,5 +181,6 @@ void getKeyInput(){
 	        }
 	        break;
 	}
+
 }
 

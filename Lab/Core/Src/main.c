@@ -26,6 +26,8 @@
 #include <button.h>
 #include <light_traffic.h>
 #include <fsm_auto.h>
+#include <fsm_setting.h>
+#include <7SegLED.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,24 +68,6 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void display7SEG(int num, uint32_t GPIO_Pin)
-{
-    char segNumber[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
-
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 0, (segNumber[num] >> 0) & 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 1, (segNumber[num] >> 1) & 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 2, (segNumber[num] >> 2) & 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 3, (segNumber[num] >> 3) & 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 4, (segNumber[num] >> 4) & 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 5, (segNumber[num] >> 5) & 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 6, (segNumber[num] >> 6) & 1);
-}
-
-
-void trafficLight(int countRed, int countYellow, int countGreen)
-{
-
-}
 /* USER CODE END 0 */
 
 /**
@@ -135,6 +119,7 @@ int main(void)
 		  setTimer(1,1000);
 	  }
 	  fsm_auto_run();
+	  fsm_config();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -236,8 +221,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_T_Pin|LR_Pin|LY_Pin|LG_Pin
-                          |LR1_Pin|LY1_Pin|LG1_Pin|LED_B_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_B_Pin|LED_T_Pin|LR_Pin|LY_Pin
+                          |LG_Pin|LR1_Pin|LY1_Pin|LG1_Pin
+                          |EN1_Pin|EN2_Pin|EN3_Pin|EN4_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SEG1_1_Pin|SEG1_2_Pin|SEG1_3_Pin|SEG2_4_Pin
@@ -251,10 +237,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_T_Pin LR_Pin LY_Pin LG_Pin
-                           LR1_Pin LY1_Pin LG1_Pin LED_B_Pin */
-  GPIO_InitStruct.Pin = LED_T_Pin|LR_Pin|LY_Pin|LG_Pin
-                          |LR1_Pin|LY1_Pin|LG1_Pin|LED_B_Pin;
+  /*Configure GPIO pins : LED_B_Pin LED_T_Pin LR_Pin LY_Pin
+                           LG_Pin LR1_Pin LY1_Pin LG1_Pin
+                           EN1_Pin EN2_Pin EN3_Pin EN4_Pin */
+  GPIO_InitStruct.Pin = LED_B_Pin|LED_T_Pin|LR_Pin|LY_Pin
+                          |LG_Pin|LR1_Pin|LY1_Pin|LG1_Pin
+                          |EN1_Pin|EN2_Pin|EN3_Pin|EN4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

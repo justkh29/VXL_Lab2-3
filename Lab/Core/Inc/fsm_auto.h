@@ -11,11 +11,9 @@
 #include "main.h"
 #include "light_traffic.h"
 #include "software_timer.h"
+#include "fsm_setting.h"
+#include "7SegLED.h"
 
-extern int status;
-extern int duration_G;
-extern int duration_R;
-extern int duration_Y;
 
 void fsm_auto_run();
 
