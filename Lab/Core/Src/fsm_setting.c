@@ -35,9 +35,10 @@ void changeMode()
 
 void fsm_config()
 {
-	if (isButton1Pressed() == 1)
+	if (isButton1Pressed() == 1 || isButton1LongPressed())
 	{
 		changeMode();
 		button1_flag = 0;
+		button1_long_pressed = 0;
 	}
 }

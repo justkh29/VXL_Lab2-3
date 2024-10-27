@@ -48,7 +48,6 @@ int isButton3Pressed(){
 
 int isButton1LongPressed(){
 	if(button1_long_pressed == 1){
-		button1_long_pressed = 0;
 		return 1;
 	}
 	return 0;
@@ -64,7 +63,7 @@ void subKeyProcess(int button)
 			button1_flag = 1;
 			break;
 		case 2:
-			HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, RESET);
+			HAL_GPIO_TogglePin(LED_B_GPIO_Port, LED_B_Pin);
 			button2_flag = 1;
 			break;
 		case 3:
@@ -72,6 +71,23 @@ void subKeyProcess(int button)
 			button3_flag = 1;
 			break;
 	}
+}
+
+void subLongKeyProcess(int button) {
+    // Handle button long press here
+    switch (button) {
+        case 1:
+            button1_long_pressed = 1;
+
+            break;
+        case 2:
+        	HAL_GPIO_TogglePin(LED_B_GPIO_Port, LED_B_Pin);
+            // Handle long press for button 2 if needed
+            break;
+        case 3:
+            // Handle long press for button 3 if needed
+            break;
+    }
 }
 
 void getKeyInput()
@@ -83,34 +99,28 @@ void getKeyInput()
 
 	int keyState = (KeyReg1_1 == KeyReg2_1) && (KeyReg1_1 == KeyReg3_1);
 
-	switch (keyState)
-	{
-	    case 1: // Key is stable
-	        if (KeyReg3_1 == PRESSED_STATE)
-	        {
-	            if (TimeOutForKeyPress1 == 0)
-	            {
-	                TimeOutForKeyPress1 = 500;
-	                subKeyProcess(1);
-	            }
-	            else
-	            {
-	                TimeOutForKeyPress1--;
-	            }
-	        }
-	        break;
-	    case 0: // Key state is changing
-	        if (KeyReg2_1 != KeyReg3_1)
-	        {
-	            KeyReg3_1 = KeyReg2_1;
-	            if (KeyReg3_1 == PRESSED_STATE)
-	            {
-	                TimeOutForKeyPress1 = 500;
-	                subKeyProcess(1);
-	            }
-	        }
-	        break;
-	}
+    switch (keyState) {
+        case 1: // Key is stable
+            if (KeyReg3_1 == PRESSED_STATE) {
+                if (TimeOutForKeyPress1 == 0) {
+                    subLongKeyProcess(1);
+                } else {
+                    TimeOutForKeyPress1--;
+                }
+            } else {
+                TimeOutForKeyPress1 = 500; // Reset timeout when key is released
+            }
+            break;
+        case 0: // Key state is changing
+            if (KeyReg2_1 != KeyReg3_1) {
+                KeyReg3_1 = KeyReg2_1;
+                if (KeyReg3_1 == PRESSED_STATE) {
+                    TimeOutForKeyPress1 = 500;
+                    subKeyProcess(1);
+                }
+            }
+            break;
+    }
 
 	KeyReg2_2 = KeyReg1_2;
 	KeyReg1_2 = KeyReg0_2;
@@ -118,34 +128,34 @@ void getKeyInput()
 
 	int keyState2 = (KeyReg1_2 == KeyReg2_2) && (KeyReg1_2 == KeyReg3_2);
 
-	switch (keyState2)
-	{
-	    case 1: // Key is stable
-	        if (KeyReg3_2 == PRESSED_STATE)
-	        {
-	            if (TimeOutForKeyPress2 == 0)
-	            {
-	                TimeOutForKeyPress2 = 500;
-	                subKeyProcess(2);
-	            }
-	            else
-	            {
-	                TimeOutForKeyPress2--;
-	            }
-	        }
-	        break;
-	    case 0: // Key state is changing
-	        if (KeyReg2_2 != KeyReg3_2)
-	        {
-	            KeyReg3_2 = KeyReg2_2;
-	            if (KeyReg3_2 == PRESSED_STATE)
-	            {
-	                TimeOutForKeyPress2 = 500;
-	                subKeyProcess(2);
-	            }
-	        }
-	        break;
-	}
+    switch (keyState2) {
+        case 1: // Key is stable
+            if (KeyReg3_2 == PRESSED_STATE)
+            {
+                if (TimeOutForKeyPress2 == 0)
+                {
+                    subLongKeyProcess(2);
+                    TimeOutForKeyPress2 = 500;
+                }
+                else
+                {
+                    TimeOutForKeyPress2--;
+                }
+            }
+            break;
+            break;
+        case 0: // Key state is changing
+            if (KeyReg2_2 != KeyReg3_2)
+            {
+                KeyReg3_2 = KeyReg2_2;
+                if (KeyReg3_2 == PRESSED_STATE)
+                {
+                    TimeOutForKeyPress2 = 500;
+                    subKeyProcess(2);
+                }
+            }
+            break;
+    }
 
 	KeyReg2_3 = KeyReg1_3;
 	KeyReg1_3 = KeyReg0_3;
@@ -153,34 +163,28 @@ void getKeyInput()
 
 	int keyState3 = (KeyReg1_3 == KeyReg2_3) && (KeyReg1_3 == KeyReg3_3);
 
-	switch (keyState3)
-	{
-	    case 1: // Key is stable
-	        if (KeyReg3_3 == PRESSED_STATE)
-	        {
-	            if (TimeOutForKeyPress3 == 0)
-	            {
-	                TimeOutForKeyPress3 = 500;
-	                subKeyProcess(3);
-	            }
-	            else
-	            {
-	                TimeOutForKeyPress3--;
-	            }
-	        }
-	        break;
-	    case 0: // Key state is changing
-	        if (KeyReg2_3 != KeyReg3_3)
-	        {
-	            KeyReg3_3 = KeyReg2_3;
-	            if (KeyReg3_3 == PRESSED_STATE)
-	            {
-	                TimeOutForKeyPress3 = 500;
-	                subKeyProcess(3);
-	            }
-	        }
-	        break;
-	}
+    switch (keyState3) {
+        case 1: // Key is stable
+            if (KeyReg3_3 == PRESSED_STATE) {
+                if (TimeOutForKeyPress3 == 0) {
+                    subLongKeyProcess(3);
+                } else {
+                    TimeOutForKeyPress3--;
+                }
+            } else {
+                TimeOutForKeyPress3 = 500; // Reset timeout when key is released
+            }
+            break;
+        case 0: // Key state is changing
+            if (KeyReg2_3 != KeyReg3_3) {
+                KeyReg3_3 = KeyReg2_3;
+                if (KeyReg3_3 == PRESSED_STATE) {
+                    TimeOutForKeyPress3 = 500;
+                    subKeyProcess(3);
+                }
+            }
+            break;
+    }
 
 }
 
