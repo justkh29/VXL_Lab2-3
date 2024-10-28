@@ -1,4 +1,4 @@
-Core/Src/fsm_setting.o: ../Core/Src/fsm_setting.c \
+Core/Src/fsm_edit.o: ../Core/Src/fsm_edit.c ../Core/Inc/fsm_edit.h \
  ../Core/Inc/fsm_setting.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
@@ -28,6 +28,8 @@ Core/Src/fsm_setting.o: ../Core/Src/fsm_setting.c \
  ../Core/Inc/fsm_auto.h ../Core/Inc/fsm_setting.h \
  ../Core/Inc/software_timer.h ../Core/Inc/7SegLED.h \
  ../Core/Inc/software_timer.h
+
+../Core/Inc/fsm_edit.h:
 
 ../Core/Inc/fsm_setting.h:
 

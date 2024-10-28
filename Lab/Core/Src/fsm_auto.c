@@ -11,13 +11,13 @@ void fsm_auto_run()
 {
 	switch(status)
 	{
-		case 0:
+		case INIT:
 			ledReset();
 			status = 1;
 			setTimer(0, 1000);
 			count = duration_G;
 			break;
-		case 1:
+		case GREEN_RED:
 			ledGreen_Red();
 			if (timer_flag[0] == 1)
 			{
@@ -32,7 +32,7 @@ void fsm_auto_run()
 				setTimer(0, 1000);
 			}
 			break;
-		case 2:
+		case YELLOW_RED:
 			ledYellow_Red();
 			if (timer_flag[0] == 1)
 			{
@@ -48,7 +48,7 @@ void fsm_auto_run()
 				setTimer(0, 1000);
 			}
 			break;
-		case 3:
+		case RED_GREEN:
 			ledRed_Green();
 			if (timer_flag[0] == 1)
 			{
@@ -63,7 +63,7 @@ void fsm_auto_run()
 				setTimer(0, 1000);
 			}
 			break;
-		case 4:
+		case RED_YELLOW:
 			ledRed_Yellow();
 			if (timer_flag[0] == 1)
 			{

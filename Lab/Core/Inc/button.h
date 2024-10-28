@@ -18,11 +18,15 @@ extern int button1_flag;
 extern int button2_flag;
 extern int button3_flag;
 extern int button1_long_pressed;
+extern int button2_long_pressed;
+extern int button3_long_pressed;
 
 int isButton1Pressed();
 int isButton2Pressed();
 int isButton3Pressed();
 int isButton1LongPressed();
+int isButton2LongPressed();
+int isButton3LongPressed();
 void ledDebug();
 void getKeyInput();
 

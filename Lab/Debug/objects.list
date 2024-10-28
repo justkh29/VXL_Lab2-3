@@ -1,6 +1,7 @@
 "./Core/Src/7SegLED.o"
 "./Core/Src/button.o"
 "./Core/Src/fsm_auto.o"
+"./Core/Src/fsm_edit.o"
 "./Core/Src/fsm_setting.o"
 "./Core/Src/light_traffic.o"
 "./Core/Src/main.o"

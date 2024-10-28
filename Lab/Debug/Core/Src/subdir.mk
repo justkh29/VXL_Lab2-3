@@ -8,6 +8,7 @@ C_SRCS += \
 ../Core/Src/7SegLED.c \
 ../Core/Src/button.c \
 ../Core/Src/fsm_auto.c \
+../Core/Src/fsm_edit.c \
 ../Core/Src/fsm_setting.c \
 ../Core/Src/light_traffic.c \
 ../Core/Src/main.c \
@@ -22,6 +23,7 @@ OBJS += \
 ./Core/Src/7SegLED.o \
 ./Core/Src/button.o \
 ./Core/Src/fsm_auto.o \
+./Core/Src/fsm_edit.o \
 ./Core/Src/fsm_setting.o \
 ./Core/Src/light_traffic.o \
 ./Core/Src/main.o \
@@ -36,6 +38,7 @@ C_DEPS += \
 ./Core/Src/7SegLED.d \
 ./Core/Src/button.d \
 ./Core/Src/fsm_auto.d \
+./Core/Src/fsm_edit.d \
 ./Core/Src/fsm_setting.d \
 ./Core/Src/light_traffic.d \
 ./Core/Src/main.d \
