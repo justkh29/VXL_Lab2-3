@@ -105,12 +105,6 @@ int main(void)
 
   while (1)
   {
-	  if (timer_flag[2] == 1)
-	  {
-		  timer_flag[2] = 0;
-		  HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
-		  setTimer(2,1000);
-	  }
 	  fsm_auto_run();
 	  fsm_edit();
 	  fsm_config();

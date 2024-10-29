@@ -28,7 +28,7 @@ void fsm_auto_run()
 			}
 			if (timer_flag[0] == 1)
 			{
-
+				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
@@ -50,6 +50,7 @@ void fsm_auto_run()
 			}
 			if (timer_flag[0] == 1)
 			{
+				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
@@ -72,6 +73,7 @@ void fsm_auto_run()
 			}
 			if (timer_flag[0] == 1)
 			{
+				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
@@ -93,6 +95,7 @@ void fsm_auto_run()
 			}
 			if (timer_flag[0] == 1)
 			{
+				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
