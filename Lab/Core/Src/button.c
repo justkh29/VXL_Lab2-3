@@ -73,7 +73,6 @@ int isButton3LongPressed(){
 
 void subKeyProcess(int button)
 {
-	//TODO
 	switch (button)
 	{
 		case 1:

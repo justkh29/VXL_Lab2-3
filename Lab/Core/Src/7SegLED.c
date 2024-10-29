@@ -46,7 +46,7 @@ void display7SEG_Auto(int duration1, int duration2)
 			seg = 2;
 			break;
 		case 2:
-			display7SEG_Dual(duration1 + duration2);
+			display7SEG_Dual(duration2);
 			HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
 			seg = 1;
 			break;

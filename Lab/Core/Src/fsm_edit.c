@@ -12,8 +12,14 @@ void fsm_edit()
 	switch (status)
 	{
 		case EDIT_RED:
-			ledRed_Green();
-			display7SEG_Dual(duration_R + duration_ADD);
+			if (timer_flag[1] == 1)
+			{
+				HAL_GPIO_TogglePin(LR_GPIO_Port, LR_Pin);
+				HAL_GPIO_TogglePin(LR1_GPIO_Port, LR1_Pin);
+				display7SEG_Auto(duration_R + duration_ADD, 2);
+				timer_flag[1] = 0;
+				setTimer(1,500);
+			}
 			if (isButton2Pressed() == 1 || isButton2LongPressed() == 1)
 			{
 				duration_ADD++;
@@ -25,7 +31,7 @@ void fsm_edit()
 				duration_R += duration_ADD;
 				if (duration_R > 99)
 				{
-					duration_R = 99;
+					duration_R = 1;
 				}
 				duration_ADD = 0;
 				button3_flag = 0;
@@ -36,8 +42,14 @@ void fsm_edit()
 			}
 			break;
 		case EDIT_YELLOW:
-			ledYellow_Red();
-			display7SEG_Dual(duration_Y + duration_ADD);
+			if (timer_flag[1] == 1)
+			{
+				HAL_GPIO_TogglePin(LY_GPIO_Port, LY_Pin);
+				HAL_GPIO_TogglePin(LY1_GPIO_Port, LY1_Pin);
+				display7SEG_Auto(duration_Y + duration_ADD, 3);
+				timer_flag[1] = 0;
+				setTimer(1,500);
+			}
 			if (isButton2Pressed() == 1 || isButton2LongPressed() == 1)
 			{
 				duration_ADD++;
@@ -50,7 +62,7 @@ void fsm_edit()
 				duration_Y += duration_ADD;
 				if (duration_Y > 99)
 				{
-					duration_Y = 99;
+					duration_Y = 1;
 				}
 				duration_ADD = 0;
 				button3_flag = 0;
@@ -61,8 +73,14 @@ void fsm_edit()
 			}
 			break;
 		case EDIT_GREEN:
-			ledGreen_Red();
-			display7SEG_Dual(duration_G + duration_ADD);
+			if (timer_flag[1] == 1)
+			{
+				HAL_GPIO_TogglePin(LG_GPIO_Port, LG_Pin);
+				HAL_GPIO_TogglePin(LG1_GPIO_Port, LG1_Pin);
+				display7SEG_Auto(duration_G + duration_ADD, 4);
+				timer_flag[1] = 0;
+				setTimer(1,500);
+			}
 			if (isButton2Pressed() == 1 || isButton2LongPressed() == 1)
 			{
 				duration_ADD++;
@@ -74,7 +92,7 @@ void fsm_edit()
 				duration_G += duration_ADD;
 				if (duration_G > 99)
 				{
-					duration_G = 99;
+					duration_G = 1;
 				}
 				duration_ADD = 0;
 				button3_flag = 0;
