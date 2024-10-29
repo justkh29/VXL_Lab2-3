@@ -23,7 +23,7 @@ Core/Src/7SegLED.o: ../Core/Src/7SegLED.c ../Core/Inc/7SegLED.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/software_timer.h
+ ../Core/Inc/software_timer.h ../Core/Inc/global_var.h ../Core/Inc/main.h
 
 ../Core/Inc/7SegLED.h:
 
@@ -78,3 +78,7 @@ Core/Src/7SegLED.o: ../Core/Src/7SegLED.c ../Core/Inc/7SegLED.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
 ../Core/Inc/software_timer.h:
+
+../Core/Inc/global_var.h:
+
+../Core/Inc/main.h:

@@ -15,11 +15,17 @@ void fsm_auto_run()
 			ledReset();
 			status = 1;
 			setTimer(0, 1000);
+			setTimer(1, 500);
 			count = duration_G;
 			break;
 		case GREEN_RED:
 			ledGreen_Red();
-			display7SEG_Dual(count);
+			if (timer_flag[1] == 1)
+			{
+				display7SEG_Auto(count, duration_Y);
+				timer_flag[1] = 0;
+				setTimer(1,500);
+			}
 			if (timer_flag[0] == 1)
 			{
 

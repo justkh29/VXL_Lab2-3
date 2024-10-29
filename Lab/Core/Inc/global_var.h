@@ -18,7 +18,6 @@ extern int mode;
 extern int status;
 extern int duration_ADD;
 extern int count;
-
-
+extern int seg;
 
 #endif /* INC_GLOBAL_VAR_H_ */

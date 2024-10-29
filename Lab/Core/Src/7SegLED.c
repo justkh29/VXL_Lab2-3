@@ -20,34 +20,11 @@ void display7SEG(int num, uint32_t GPIO_Pin)
     HAL_GPIO_WritePin(GPIOB, GPIO_Pin << 6, (segNumber[num] >> 6) & 1);
 }
 
-//void update7SEG(int index)
-//{
-//	  offPin();
-//	  switch(index)
-//	  {
-//		  case 0:
-//		  {
-//			  display7SEG(led_buffer[0]);
-//			  break;
-//		  }
-//		  case 1:
-//		  {
-//			  display7SEG(led_buffer[1]);
-//			  break;
-//		  }
-//		  case 2:
-//		  {
-//			  display7SEG(led_buffer[2]);
-//			  break;
-//		  }
-//		  case 3:
-//		  {
-//			  display7SEG(led_buffer[3]);
-//			  break;
-//		  }
-//	  }
-//}
-
+void offPin()
+{
+	HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+	HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+}
 
 void display7SEG_Dual(int num)
 {
@@ -56,4 +33,22 @@ void display7SEG_Dual(int num)
 
 	display7SEG(tens, GPIO_PIN_0);
 	display7SEG(unit, GPIO_PIN_7);
+}
+
+void display7SEG_Auto(int duration1, int duration2)
+{
+	offPin();
+	switch(seg)
+	{
+		case 1:
+			display7SEG_Dual(duration1);
+			HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
+			seg = 2;
+			break;
+		case 2:
+			display7SEG_Dual(duration1 + duration2);
+			HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
+			seg = 1;
+			break;
+	}
 }

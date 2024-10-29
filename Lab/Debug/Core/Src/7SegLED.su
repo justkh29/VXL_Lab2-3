@@ -1,2 +1,4 @@
 7SegLED.c:10:6:display7SEG	32	static
-7SegLED.c:52:6:display7SEG_Dual	24	static
+7SegLED.c:23:6:offPin	8	static
+7SegLED.c:29:6:display7SEG_Dual	24	static
+7SegLED.c:38:6:display7SEG_Auto	16	static
