@@ -9,7 +9,8 @@
 #define INC_FSM_EDIT_H_
 
 #include <fsm_setting.h>
-
-void duration_edit();
+#include <global_var.h>
+#include <7SegLED.h>
+void fsm_edit();
 
 #endif /* INC_FSM_EDIT_H_ */

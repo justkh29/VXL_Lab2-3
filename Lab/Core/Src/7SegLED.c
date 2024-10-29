@@ -7,7 +7,7 @@
 
 #include "7SegLED.h"
 
-void display7SEG_single(int num, uint32_t GPIO_Pin)
+void display7SEG(int num, uint32_t GPIO_Pin)
 {
     char segNumber[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
 
@@ -47,3 +47,13 @@ void display7SEG_single(int num, uint32_t GPIO_Pin)
 //		  }
 //	  }
 //}
+
+
+void display7SEG_Dual(int num)
+{
+	int tens = num / 10;
+	int unit = num % 10;
+
+	display7SEG(tens, GPIO_PIN_0);
+	display7SEG(unit, GPIO_PIN_7);
+}

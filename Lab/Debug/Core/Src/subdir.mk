@@ -10,6 +10,7 @@ C_SRCS += \
 ../Core/Src/fsm_auto.c \
 ../Core/Src/fsm_edit.c \
 ../Core/Src/fsm_setting.c \
+../Core/Src/global_var.c \
 ../Core/Src/light_traffic.c \
 ../Core/Src/main.c \
 ../Core/Src/software_timer.c \
@@ -25,6 +26,7 @@ OBJS += \
 ./Core/Src/fsm_auto.o \
 ./Core/Src/fsm_edit.o \
 ./Core/Src/fsm_setting.o \
+./Core/Src/global_var.o \
 ./Core/Src/light_traffic.o \
 ./Core/Src/main.o \
 ./Core/Src/software_timer.o \
@@ -40,6 +42,7 @@ C_DEPS += \
 ./Core/Src/fsm_auto.d \
 ./Core/Src/fsm_edit.d \
 ./Core/Src/fsm_setting.d \
+./Core/Src/global_var.d \
 ./Core/Src/light_traffic.d \
 ./Core/Src/main.d \
 ./Core/Src/software_timer.d \

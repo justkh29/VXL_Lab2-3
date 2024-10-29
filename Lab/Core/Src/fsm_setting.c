@@ -22,13 +22,16 @@ void changeMode()
 			status = 0;
 			break;
 		case 2:
-			status = 5;
+			ledReset();
+			status = 11;
 			break;
 		case 3:
-			status = 6;
+			ledReset();
+			status = 12;
 			break;
 		case 4:
-			status = 7;
+			ledReset();
+			status = 13;
 			break;
 	}
 }

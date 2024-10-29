@@ -10,4 +10,5 @@
 #include "main.h"
 #include "software_timer.h"
 void display7SEG_Automode(int num, uint32_t GPIO_Pin);
+void display7SEG_Dual(int num);
 #endif /* INC_7SEGLED_H_ */

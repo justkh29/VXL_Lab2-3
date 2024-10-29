@@ -3,6 +3,7 @@
 "./Core/Src/fsm_auto.o"
 "./Core/Src/fsm_edit.o"
 "./Core/Src/fsm_setting.o"
+"./Core/Src/global_var.o"
 "./Core/Src/light_traffic.o"
 "./Core/Src/main.o"
 "./Core/Src/software_timer.o"

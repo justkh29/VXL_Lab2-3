@@ -1,2 +1,2 @@
-fsm_setting.c:12:6:changeMode	4	static
-fsm_setting.c:36:6:fsm_config	8	static
+fsm_setting.c:12:6:changeMode	8	static
+fsm_setting.c:39:6:fsm_config	8	static

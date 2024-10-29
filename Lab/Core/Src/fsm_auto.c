@@ -6,7 +6,7 @@
  */
 
 #include "fsm_auto.h"
-int count = 0;
+
 void fsm_auto_run()
 {
 	switch(status)
@@ -19,8 +19,10 @@ void fsm_auto_run()
 			break;
 		case GREEN_RED:
 			ledGreen_Red();
+			display7SEG_Dual(count);
 			if (timer_flag[0] == 1)
 			{
+
 				count--;
 				if (count <= 0)
 				{
@@ -34,6 +36,7 @@ void fsm_auto_run()
 			break;
 		case YELLOW_RED:
 			ledYellow_Red();
+			display7SEG_Dual(count);
 			if (timer_flag[0] == 1)
 			{
 				count--;
@@ -50,6 +53,7 @@ void fsm_auto_run()
 			break;
 		case RED_GREEN:
 			ledRed_Green();
+			display7SEG_Dual(count);
 			if (timer_flag[0] == 1)
 			{
 				count--;
@@ -65,6 +69,7 @@ void fsm_auto_run()
 			break;
 		case RED_YELLOW:
 			ledRed_Yellow();
+			display7SEG_Dual(count);
 			if (timer_flag[0] == 1)
 			{
 				count--;
