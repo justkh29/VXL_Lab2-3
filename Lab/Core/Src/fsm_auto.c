@@ -15,7 +15,7 @@ void fsm_auto_run()
 			ledReset();
 			status = 1;
 			setTimer(0, 1000);
-			setTimer(1, 500);
+			setTimer(1, 250);
 			count = duration_G;
 			break;
 		case GREEN_RED:
@@ -24,11 +24,10 @@ void fsm_auto_run()
 			{
 				display7SEG_Auto(count, count + duration_Y);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (timer_flag[0] == 1)
 			{
-				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
@@ -46,11 +45,10 @@ void fsm_auto_run()
 			{
 				display7SEG_Auto(count, count);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (timer_flag[0] == 1)
 			{
-				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
@@ -69,11 +67,10 @@ void fsm_auto_run()
 			{
 				display7SEG_Auto(count + duration_Y, count);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (timer_flag[0] == 1)
 			{
-				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{
@@ -91,11 +88,10 @@ void fsm_auto_run()
 			{
 				display7SEG_Auto(count, count);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (timer_flag[0] == 1)
 			{
-				HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
 				count--;
 				if (count <= 0)
 				{

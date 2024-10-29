@@ -11,15 +11,10 @@
 #include "main.h"
 #include "light_traffic.h"
 #include "fsm_auto.h"
+#include "global_var.h"
+
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
-
-extern int button1_flag;
-extern int button2_flag;
-extern int button3_flag;
-extern int button1_long_pressed;
-extern int button2_long_pressed;
-extern int button3_long_pressed;
 
 int isButton1Pressed();
 int isButton2Pressed();

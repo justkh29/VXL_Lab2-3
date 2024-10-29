@@ -24,7 +24,7 @@ void fsm_edit()
 				HAL_GPIO_TogglePin(LR1_GPIO_Port, LR1_Pin);
 				display7SEG_Auto(duration_R + duration_ADD, 2);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (isButton3Pressed() == 1)
 			{
@@ -55,7 +55,7 @@ void fsm_edit()
 				HAL_GPIO_TogglePin(LY1_GPIO_Port, LY1_Pin);
 				display7SEG_Auto(duration_Y + duration_ADD, 3);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (isButton3Pressed() == 1)
 			{
@@ -85,7 +85,7 @@ void fsm_edit()
 				HAL_GPIO_TogglePin(LG1_GPIO_Port, LG1_Pin);
 				display7SEG_Auto(duration_G + duration_ADD, 4);
 				timer_flag[1] = 0;
-				setTimer(1,500);
+				setTimer(1,250);
 			}
 			if (isButton3Pressed() == 1)
 			{

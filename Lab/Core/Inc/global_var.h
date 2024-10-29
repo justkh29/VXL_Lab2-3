@@ -20,4 +20,11 @@ extern int duration_ADD;
 extern int count;
 extern int seg;
 
+extern int button1_flag;
+extern int button2_flag;
+extern int button3_flag;
+extern int button1_long_pressed;
+extern int button2_long_pressed;
+extern int button3_long_pressed;
+
 #endif /* INC_GLOBAL_VAR_H_ */

@@ -17,12 +17,6 @@ int KeyReg3_3 = NORMAL_STATE;
 int TimeOutForKeyPress1 =  250;
 int TimeOutForKeyPress2 =  250;
 int TimeOutForKeyPress3 =  250;
-int button1_long_pressed = 0;
-int button2_long_pressed = 0;
-int button3_long_pressed = 0;
-int button1_flag = 0;
-int button2_flag = 0;
-int button3_flag = 0;
 
 int isButton1Pressed(){
 	if(button1_flag == 1){
