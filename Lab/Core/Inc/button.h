@@ -8,10 +8,10 @@
 #ifndef INC_BUTTON_H_
 #define INC_BUTTON_H_
 
-#include "main.h"
-#include "light_traffic.h"
-#include "fsm_auto.h"
-#include "global_var.h"
+#include <main.h>
+#include <light_traffic.h>
+#include <fsm_auto.h>
+#include <global_var.h>
 
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET

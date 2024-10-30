@@ -8,7 +8,7 @@
 #ifndef INC_LIGHT_TRAFFIC_H_
 #define INC_LIGHT_TRAFFIC_H_
 
-#include "main.h"
+#include <main.h>
 
 void ledReset();
 void ledRed_Green();
