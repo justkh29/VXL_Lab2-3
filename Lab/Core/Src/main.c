@@ -22,14 +22,15 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <software_timer.h>
-#include <button.h>
-#include <light_traffic.h>
-#include <fsm_auto.h>
-#include <fsm_setting.h>
-#include <7SegLED.h>
-#include <fsm_edit.h>
-#include <global_var.h>
+//#include <software_timer.h>
+//#include <button.h>
+//#include <light_traffic.h>
+//#include <fsm_auto.h>
+//#include <fsm_setting.h>
+//#include <7SegLED.h>
+//#include <fsm_edit.h>
+//#include <global_var.h>
+#include <Scheduler.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,6 +63,10 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void ledtest()
+{
+	HAL_GPIO_TogglePin(LED_T_GPIO_Port, LED_T_Pin);
+}
 /* USER CODE END 0 */
 
 /**
@@ -100,14 +105,15 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-
+  SCH_Add_Task(ledtest, 1000, 2000);
 
 
   while (1)
   {
-	  fsm_auto_run();
-	  fsm_edit();
-	  fsm_config();
+//	  fsm_auto_run();
+//	  fsm_edit();
+//	  fsm_config();
+	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -254,8 +260,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
-	timerRun();
-	getKeyInput();
+	SCH_Update();
+	//getKeyInput();
 }
 /* USER CODE END 4 */
 

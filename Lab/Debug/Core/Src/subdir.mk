@@ -6,6 +6,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/7SegLED.c \
+../Core/Src/Scheduler.c \
 ../Core/Src/button.c \
 ../Core/Src/fsm_auto.c \
 ../Core/Src/fsm_edit.c \
@@ -22,6 +23,7 @@ C_SRCS += \
 
 OBJS += \
 ./Core/Src/7SegLED.o \
+./Core/Src/Scheduler.o \
 ./Core/Src/button.o \
 ./Core/Src/fsm_auto.o \
 ./Core/Src/fsm_edit.o \
@@ -38,6 +40,7 @@ OBJS += \
 
 C_DEPS += \
 ./Core/Src/7SegLED.d \
+./Core/Src/Scheduler.d \
 ./Core/Src/button.d \
 ./Core/Src/fsm_auto.d \
 ./Core/Src/fsm_edit.d \
