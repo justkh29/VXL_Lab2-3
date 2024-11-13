@@ -22,14 +22,14 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include <software_timer.h>
-//#include <button.h>
-//#include <light_traffic.h>
-//#include <fsm_auto.h>
-//#include <fsm_setting.h>
-//#include <7SegLED.h>
-//#include <fsm_edit.h>
-//#include <global_var.h>
+#include <software_timer.h>
+#include <button.h>
+#include <light_traffic.h>
+#include <fsm_auto.h>
+#include <fsm_setting.h>
+#include <7SegLED.h>
+#include <fsm_edit.h>
+#include <global_var.h>
 #include <Scheduler.h>
 /* USER CODE END Includes */
 
@@ -105,14 +105,14 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  SCH_Add_Task(ledtest, 1000, 2000);
-
+  SCH_Add_Task(ledtest, 0, 500);
+  SCH_Add_Task(fsm_auto_run, 0, 250);
+  SCH_Add_Task(fsm_edit, 0, 250);
+  SCH_Add_Task(fsm_config, 0, 250);
+  SCH_Add_Task(getKeyInput, 0, 50);
 
   while (1)
   {
-//	  fsm_auto_run();
-//	  fsm_edit();
-//	  fsm_config();
 	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 

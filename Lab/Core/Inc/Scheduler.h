@@ -21,8 +21,7 @@ typedef struct{
 
 #define SCH_MAX_TASKS	40
 #define NO_TASK_ID	0
-#define TICK 10
-
+#define DIVIDER 10
 extern sTasks SCH_tasks_G[SCH_MAX_TASKS];
 void SCH_Init(void);
 

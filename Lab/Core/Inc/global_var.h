@@ -19,6 +19,7 @@ extern int status;
 extern int duration_ADD;
 extern int count;
 extern int seg;
+extern int time_div;
 
 extern int button1_flag;
 extern int button2_flag;

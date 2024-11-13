@@ -6,27 +6,21 @@
  */
 
 #include "fsm_auto.h"
-
 void fsm_auto_run()
 {
 	switch(status)
 	{
 		case INIT:
+			time_div = 4;
 			ledReset();
 			status = 1;
-			setTimer(0, 1000);
-			setTimer(1, 250);
 			count = duration_G;
 			break;
 		case GREEN_RED:
 			ledGreen_Red();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count, count + duration_Y);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
-			if (timer_flag[0] == 1)
+			display7SEG_Auto(count, count + duration_Y);
+			time_div--;
+			if (time_div <= 0)
 			{
 				count--;
 				if (count <= 0)
@@ -35,19 +29,14 @@ void fsm_auto_run()
 					status = 2;
 					count = duration_Y;
 				}
-				timer_flag[0] = 0;
-				setTimer(0, 1000);
+				time_div = 4;
 			}
 			break;
 		case YELLOW_RED:
 			ledYellow_Red();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count, count);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
-			if (timer_flag[0] == 1)
+			display7SEG_Auto(count, count);
+			time_div--;
+			if (time_div <= 0)
 			{
 				count--;
 				if (count <= 0)
@@ -56,20 +45,14 @@ void fsm_auto_run()
 					status = 3;
 					count = duration_R - duration_Y;
 				}
-
-				timer_flag[0] = 0;
-				setTimer(0, 1000);
+				time_div = 4;
 			}
 			break;
 		case RED_GREEN:
 			ledRed_Green();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count + duration_Y, count);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
-			if (timer_flag[0] == 1)
+			display7SEG_Auto(count + duration_Y, count);
+			time_div--;
+			if (time_div <= 0)
 			{
 				count--;
 				if (count <= 0)
@@ -78,19 +61,14 @@ void fsm_auto_run()
 					status = 4;
 					count = duration_Y;
 				}
-				timer_flag[0] = 0;
-				setTimer(0, 1000);
+				time_div = 4;
 			}
 			break;
 		case RED_YELLOW:
 			ledRed_Yellow();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count, count);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
-			if (timer_flag[0] == 1)
+			display7SEG_Auto(count, count);
+			time_div--;
+			if (time_div <= 4)
 			{
 				count--;
 				if (count <= 0)
@@ -99,9 +77,7 @@ void fsm_auto_run()
 					status = 1;
 					count = duration_G;
 				}
-
-				timer_flag[0] = 0;
-				setTimer(0, 1000);
+				time_div = 4;
 			}
 			break;
 	}

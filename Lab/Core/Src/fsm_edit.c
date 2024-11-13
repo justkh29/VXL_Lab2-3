@@ -18,14 +18,11 @@ void fsm_edit()
 				button2_flag = 0;
 				button2_long_pressed = 0;
 			}
-			if (timer_flag[1] == 1)
-			{
-				HAL_GPIO_TogglePin(LR_GPIO_Port, LR_Pin);
-				HAL_GPIO_TogglePin(LR1_GPIO_Port, LR1_Pin);
-				display7SEG_Auto(duration_R + duration_ADD, 2);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
+
+			HAL_GPIO_TogglePin(LR_GPIO_Port, LR_Pin);
+			HAL_GPIO_TogglePin(LR1_GPIO_Port, LR1_Pin);
+			display7SEG_Auto(duration_R + duration_ADD, 2);
+
 			if (isButton3Pressed() == 1)
 			{
 				duration_R += duration_ADD;
@@ -49,14 +46,11 @@ void fsm_edit()
 				button2_flag = 0;
 				button2_long_pressed = 0;
 			}
-			if (timer_flag[1] == 1)
-			{
-				HAL_GPIO_TogglePin(LY_GPIO_Port, LY_Pin);
-				HAL_GPIO_TogglePin(LY1_GPIO_Port, LY1_Pin);
-				display7SEG_Auto(duration_Y + duration_ADD, 3);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
+
+			HAL_GPIO_TogglePin(LY_GPIO_Port, LY_Pin);
+			HAL_GPIO_TogglePin(LY1_GPIO_Port, LY1_Pin);
+			display7SEG_Auto(duration_Y + duration_ADD, 3);
+
 			if (isButton3Pressed() == 1)
 			{
 				duration_Y += duration_ADD;
@@ -79,14 +73,9 @@ void fsm_edit()
 				button2_flag = 0;
 				button2_long_pressed = 0;
 			}
-			if (timer_flag[1] == 1)
-			{
-				HAL_GPIO_TogglePin(LG_GPIO_Port, LG_Pin);
-				HAL_GPIO_TogglePin(LG1_GPIO_Port, LG1_Pin);
-				display7SEG_Auto(duration_G + duration_ADD, 4);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
+			HAL_GPIO_TogglePin(LG_GPIO_Port, LG_Pin);
+			HAL_GPIO_TogglePin(LG1_GPIO_Port, LG1_Pin);
+			display7SEG_Auto(duration_G + duration_ADD, 4);
 			if (isButton3Pressed() == 1)
 			{
 				duration_G += duration_ADD;
