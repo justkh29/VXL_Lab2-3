@@ -48,7 +48,7 @@ void uart_communication_fsm()
 			if(strcmp((char*)data, "RST") == 0)
 			{
 				state=TRANSMIT;
-				data_size=sprintf((char*)data_transmit, "!ADC=%d#", (int) HAL_ADC_GetValue(&hadc1));
+				data_size = sprintf((char*)data_transmit, "\r\n!ADC=%d#", (int) HAL_ADC_GetValue(&hadc1));
 			}
 			break;
 		case TRANSMIT:

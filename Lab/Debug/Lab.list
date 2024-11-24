@@ -219,7 +219,7 @@ void uart_communication_fsm()
  8000220:	4b1e      	ldr	r3, [pc, #120]	; (800029c <uart_communication_fsm+0xa4>)
  8000222:	2202      	movs	r2, #2
  8000224:	601a      	str	r2, [r3, #0]
-				data_size=sprintf((char*)data_transmit, "!ADC=%d#", (int) HAL_ADC_GetValue(&hadc1));
+				data_size=sprintf((char*)data_transmit, "\r\n!ADC=%d#", (int) HAL_ADC_GetValue(&hadc1));
  8000226:	4820      	ldr	r0, [pc, #128]	; (80002a8 <uart_communication_fsm+0xb0>)
  8000228:	f000 fe06 	bl	8000e38 <HAL_ADC_GetValue>
  800022c:	4603      	mov	r3, r0
