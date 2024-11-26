@@ -13,7 +13,7 @@
 #include <fsm_setting.h>
 #include <global_var.h>
 #include <7SegLED.h>
-
+#include <button.h>
 void fsm_auto_run();
 
 

@@ -38,6 +38,10 @@ void fsm_auto_run()
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
 			}
+			if (isButton2Pressed() == 1)
+			{
+				button2_flag = 0;
+			}
 			break;
 		case YELLOW_RED:
 			ledYellow_Red();
@@ -60,6 +64,10 @@ void fsm_auto_run()
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
 			}
+			if (isButton2Pressed() == 1)
+			{
+				button2_flag = 0;
+			}
 			break;
 		case RED_GREEN:
 			ledRed_Green();
@@ -80,6 +88,10 @@ void fsm_auto_run()
 				}
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
+			}
+			if (isButton2Pressed() == 1)
+			{
+				button2_flag = 0;
 			}
 			break;
 		case RED_YELLOW:
@@ -103,6 +115,11 @@ void fsm_auto_run()
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
 			}
+			if (isButton2Pressed() == 1)
+			{
+				button2_flag = 0;
+			}
 			break;
 	}
+
 }
