@@ -20,6 +20,11 @@
 #define RED_GREEN 3
 #define RED_YELLOW 4
 
+#define MAN_GREEN_RED 5
+#define MAN_YELLOW_RED 6
+#define MAN_RED_GREEN 7
+#define MAN_RED_YELLOW 8
+
 #define EDIT_RED 11
 #define EDIT_YELLOW 12
 #define EDIT_GREEN 13

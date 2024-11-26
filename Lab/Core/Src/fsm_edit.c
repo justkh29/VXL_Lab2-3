@@ -102,5 +102,65 @@ void fsm_edit()
 				duration_ADD = 0;
 			}
 			break;
+		case MAN_GREEN_RED:
+			ledGreen_Red();
+			if (isButton3Pressed() == 1)
+			{
+				ledReset();
+				status = 6;
+				button3_flag = 0;
+			}
+			if (isButton2Pressed() == 1)
+			{
+				status = 0;
+				mode = 1;
+				button2_flag = 0;
+			}
+			break;
+		case MAN_YELLOW_RED:
+			ledYellow_Red();
+			if (isButton3Pressed() == 1)
+			{
+				ledReset();
+				status = 7;
+				button3_flag = 0;
+			}
+			if (isButton2Pressed() == 1)
+			{
+				status = 0;
+				mode = 1;
+				button2_flag = 0;
+			}
+			break;
+		case MAN_RED_GREEN:
+			ledRed_Green();
+			if (isButton3Pressed() == 1)
+			{
+				ledReset();
+				status = 8;
+				button3_flag = 0;
+			}
+			if (isButton2Pressed() == 1)
+			{
+				status = 0;
+				mode = 1;
+				button2_flag = 0;
+			}
+			break;
+		case MAN_RED_YELLOW:
+			ledRed_Yellow();
+			if (isButton3Pressed() == 1)
+			{
+				ledReset();
+				status = 5;
+				button3_flag = 0;
+			}
+			if (isButton2Pressed() == 1)
+			{
+				status = 0;
+				mode = 1;
+				button2_flag = 0;
+			}
+			break;
 	}
 }
