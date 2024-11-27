@@ -117,9 +117,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t initial_data[]="Wait...\r\n";
+  uint8_t init[]="Wait...\r\n";
   HAL_Delay(1000);
-  HAL_UART_Transmit(&huart2, initial_data, sizeof(initial_data), 1000);
+  HAL_UART_Transmit(&huart2, init, sizeof(init), 1000);
   HAL_UART_Receive_IT(&huart2, &temp, 1);
   setTimer(0, 1000);
   while (1)

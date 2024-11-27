@@ -29,13 +29,15 @@ void command_parser_fsm()
 		case WRITING_DATA:
 			if (temp == '#')
 			{
-				data_parser = BEGIN;
-				memcpy(data,data_received,MAX_BUFFER_SIZE);
+				data_parser = DONE;
+				break;
 			}
-			else
-			{
-				data_received[data_received_index++] = temp;  //Writing data from temp to data_receive
-			}
+
+			data_received[data_received_index++] = temp;
+			break;
+		case DONE:
+			memcpy(data,data_received,MAX_BUFFER_SIZE);
+			data_parser = BEGIN;
 			break;
 	}
 }
