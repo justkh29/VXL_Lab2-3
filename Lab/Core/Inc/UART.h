@@ -25,7 +25,7 @@ extern UART_HandleTypeDef huart2;
 #define WAIT_OK 3
 #define BEGIN 4
 #define WRITING_DATA 5
-#define DONE 6
+
 uint8_t temp;
 uint8_t buffer[MAX_BUFFER_SIZE];
 uint8_t buffer_flag;

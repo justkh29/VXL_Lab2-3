@@ -1,2 +1,2 @@
 UART.c:18:6:command_parser_fsm	16	static
-UART.c:45:6:uart_communication_fsm	8	static
+UART.c:43:6:uart_communication_fsm	8	static
