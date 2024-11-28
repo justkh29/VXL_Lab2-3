@@ -21,8 +21,8 @@
 #define RED_YELLOW 4
 
 #define EDIT_RED 11
-#define EDIT_YELLOW 12
-#define EDIT_GREEN 13
+#define EDIT_GREEN 12
+#define EDIT_YELLOW 13
 
 
 void changeMode();

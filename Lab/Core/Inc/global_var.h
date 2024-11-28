@@ -13,7 +13,9 @@
 extern int duration_G;
 extern int duration_R;
 extern int duration_Y;
-extern int duration_G1;
+extern const int duration_G_default;
+extern const int duration_Y_default;
+extern const int duration_R_default;
 extern int mode;
 extern int status;
 extern int duration_ADD;
