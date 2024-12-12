@@ -17,23 +17,19 @@ void fsm_auto_run()
 			setTimer(0, 1000);
 			setTimer(1, 250);
 			count = duration_G;
+			ledGreen_Red();
 			break;
 		case GREEN_RED:
-			ledGreen_Red();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count, count + duration_Y);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
 			if (timer_flag[0] == 1)
 			{
+				ledGreen_Red();
+				display7SEG_Auto(count, count);
 				count--;
 				if (count <= 0)
 				{
-					ledReset();
 					status = 2;
 					count = duration_Y;
+
 				}
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
@@ -44,23 +40,17 @@ void fsm_auto_run()
 			}
 			break;
 		case YELLOW_RED:
-			ledYellow_Red();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count, count);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
+
 			if (timer_flag[0] == 1)
 			{
+				ledYellow_Red();
+				display7SEG_Auto(count, count);
 				count--;
 				if (count <= 0)
 				{
-					ledReset();
 					status = 3;
 					count = duration_R - duration_Y;
 				}
-
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
 			}
@@ -70,19 +60,14 @@ void fsm_auto_run()
 			}
 			break;
 		case RED_GREEN:
-			ledRed_Green();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count + duration_Y, count);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
+
 			if (timer_flag[0] == 1)
 			{
+				ledRed_Green();
+				display7SEG_Auto(count + duration_Y, count);
 				count--;
 				if (count <= 0)
 				{
-					ledReset();
 					status = 4;
 					count = duration_Y;
 				}
@@ -95,23 +80,17 @@ void fsm_auto_run()
 			}
 			break;
 		case RED_YELLOW:
-			ledRed_Yellow();
-			if (timer_flag[1] == 1)
-			{
-				display7SEG_Auto(count, count);
-				timer_flag[1] = 0;
-				setTimer(1,250);
-			}
+
 			if (timer_flag[0] == 1)
 			{
+				ledRed_Yellow();
+				display7SEG_Auto(count, count);
 				count--;
 				if (count <= 0)
 				{
-					ledReset();
 					status = 1;
 					count = duration_G;
 				}
-
 				timer_flag[0] = 0;
 				setTimer(0, 1000);
 			}

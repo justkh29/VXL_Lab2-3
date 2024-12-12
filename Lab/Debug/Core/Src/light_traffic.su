@@ -1,5 +1,5 @@
 light_traffic.c:9:6:ledReset	8	static
 light_traffic.c:18:6:ledRed_Green	8	static
-light_traffic.c:24:6:ledRed_Yellow	8	static
-light_traffic.c:30:6:ledGreen_Red	8	static
-light_traffic.c:36:6:ledYellow_Red	8	static
+light_traffic.c:28:6:ledRed_Yellow	8	static
+light_traffic.c:37:6:ledGreen_Red	8	static
+light_traffic.c:46:6:ledYellow_Red	8	static
